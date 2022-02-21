@@ -15,22 +15,16 @@ const Navigation = () => {
           </a>
           <div className="border-r h-8 w-0.5"></div>
           <a
-            href="#"
-            className="font-semibold text-lg lg:text-xl tracking-tight transition transform hover:translate-x-3 cursor-pointer"
-          >
-            A propos
-          </a>
-          <a
-            href="#"
-            className="font-semibold text-lg lg:text-xl tracking-tight transition transform hover:translate-x-3 cursor-pointer"
-          >
-            Planning
-          </a>
-          <a
             onClick={() => router.push("/games")}
             className="font-semibold text-lg lg:text-xl tracking-tight transition transform hover:translate-x-3 cursor-pointer"
           >
             Jeux
+          </a>
+          <a
+            onClick={() => router.push("/planning")}
+            className="font-semibold text-lg lg:text-xl tracking-tight transition transform hover:translate-x-3 cursor-pointer"
+          >
+            Planning
           </a>
         </div>
         <div className="inline-flex space-x-2 md:mt-0 lg:mt-0 mt-4">
