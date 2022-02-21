@@ -15,7 +15,48 @@ const Planning = () => {
                       <span className="text-center font-medium">Lundi</span>
                     </div>
                   </div>
-                  <div className="bg-neutral-900 h-80 rounded-xl"></div>
+                  <div className="bg-neutral-900 h-80 rounded-xl">
+                    <div className="flex justify-center items-center py-4">
+                      <div className="grid grid-cols-3 gap-5">
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>21</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>25</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div className="space-y-2">
                   <div className="bg-neutral-800 w-[170px] h-14 px-4 py-4 rounded-xl">
@@ -23,7 +64,48 @@ const Planning = () => {
                       <span className="text-center font-medium">Mardi</span>
                     </div>
                   </div>
-                  <div className="bg-neutral-900 h-80 rounded-xl"></div>
+                  <div className="bg-neutral-900 h-80 rounded-xl">
+                    <div className="flex justify-center items-center py-4">
+                      <div className="grid grid-cols-3 gap-5">
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>21</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>25</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div className="space-y-2">
                   <div className="bg-neutral-800 w-[170px] h-14 px-4 py-4 rounded-xl">
@@ -31,7 +113,48 @@ const Planning = () => {
                       <span className="text-center font-medium">Mercredi</span>
                     </div>
                   </div>
-                  <div className="bg-neutral-900 h-80 rounded-xl"></div>
+                  <div className="bg-neutral-900 h-80 rounded-xl">
+                    <div className="flex justify-center items-center py-4">
+                      <div className="grid grid-cols-3 gap-5">
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>21</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>25</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div className="space-y-2">
                   <div className="bg-neutral-800 w-[170px] h-14 px-4 py-4 rounded-xl">
@@ -39,7 +162,48 @@ const Planning = () => {
                       <span className="text-center font-medium">Jeudi</span>
                     </div>
                   </div>
-                  <div className="bg-neutral-900 h-80 rounded-xl"></div>
+                  <div className="bg-neutral-900 h-80 rounded-xl">
+                    <div className="flex justify-center items-center py-4">
+                      <div className="grid grid-cols-3 gap-5">
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>21</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>25</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div className="space-y-2">
                   <div className="bg-neutral-800 w-[170px] h-14 px-4 py-4 rounded-xl">
@@ -47,7 +211,48 @@ const Planning = () => {
                       <span className="text-center font-medium">Vendredi</span>
                     </div>
                   </div>
-                  <div className="bg-neutral-900 h-80 rounded-xl"></div>
+                  <div className="bg-neutral-900 h-80 rounded-xl">
+                    <div className="flex justify-center items-center py-4">
+                      <div className="grid grid-cols-3 gap-5">
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>21</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>25</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div className="space-y-2">
                   <div className="bg-neutral-800 w-[170px] h-14 px-4 py-4 rounded-xl">
@@ -55,7 +260,48 @@ const Planning = () => {
                       <span className="text-center font-medium">Samedi</span>
                     </div>
                   </div>
-                  <div className="bg-neutral-900 h-80 rounded-xl"></div>
+                  <div className="bg-neutral-900 h-80 rounded-xl">
+                    <div className="flex justify-center items-center py-4">
+                      <div className="grid grid-cols-3 gap-5">
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>21</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>25</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div className="space-y-2">
                   <div className="bg-neutral-800 w-[170px] h-14 px-4 py-4 rounded-xl">
@@ -63,7 +309,48 @@ const Planning = () => {
                       <span className="text-center font-medium">Dimanche</span>
                     </div>
                   </div>
-                  <div className="bg-neutral-900 h-80 rounded-xl"></div>
+                  <div className="bg-neutral-900 h-80 rounded-xl">
+                    <div className="flex justify-center items-center py-4">
+                      <div className="grid grid-cols-3 gap-5">
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>21</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>25</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                        <div className="px-2 py-1 bg-[#6444a4] rounded-full">
+                          <span>19</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
