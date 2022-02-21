@@ -1,4 +1,6 @@
+import Icons from "../components/Icons";
 import Navigation from "../components/Navigation";
+import { animateScroll as scroll } from "react-scroll";
 
 const Planning = () => {
   return (
@@ -356,6 +358,14 @@ const Planning = () => {
             </div>
           </div>
         </div>
+      </div>
+      <div className="fixed bottom-0 right-0 px-5 py-5">
+        <button
+          onClick={() => scroll.scrollToTop()}
+          className="bg-[#6444a4] px-2 py-2 rounded-full transition transform hover:-translate-y-3 shadow-xl"
+        >
+          <Icons name="arrow-top" className="w-6 h-6 text-white" />
+        </button>
       </div>
     </>
   );

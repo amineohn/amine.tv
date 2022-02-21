@@ -7,6 +7,8 @@ import Icons from "../components/Icons";
 import { TwitchEmbed } from "react-twitch-embed";
 import { Transition } from "@headlessui/react";
 import { configuration } from "../util/configuration";
+import { animateScroll as scroll } from "react-scroll";
+
 const Home: NextPage = () => {
   const [show, setShow] = useState(true);
   const [message, setMessage] = useState(true);
@@ -143,7 +145,10 @@ const Home: NextPage = () => {
         </div>
       </div>
       <div className="fixed bottom-0 right-0 px-5 py-5">
-        <button className="bg-[#6444a4] px-2 py-2 rounded-full transition transform hover:-translate-y-3 shadow-xl">
+        <button
+          onClick={() => scroll.scrollToTop()}
+          className="bg-[#6444a4] px-2 py-2 rounded-full transition transform hover:-translate-y-3 shadow-xl"
+        >
           <Icons name="arrow-top" className="w-6 h-6 text-white" />
         </button>
       </div>

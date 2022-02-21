@@ -5,7 +5,7 @@ import Navigation from "../components/Navigation";
 import Icons from "../components/Icons";
 import { Combobox, Transition } from "@headlessui/react";
 import { CheckIcon, SelectorIcon } from "@heroicons/react/solid";
-
+import { animateScroll as scroll } from "react-scroll";
 const MyGames = () => {
   const [data, setData] = useState([{}] as any);
   const [query, setQuery] = useState("");
@@ -144,7 +144,10 @@ const MyGames = () => {
         </div>
       </div>
       <div className="fixed bottom-0 right-0 px-5 py-5">
-        <button className="bg-[#6444a4] px-2 py-2 rounded-full transition transform hover:-translate-y-3 shadow-xl">
+        <button
+          onClick={() => scroll.scrollToTop()}
+          className="bg-[#6444a4] px-2 py-2 rounded-full transition transform hover:-translate-y-3 shadow-xl"
+        >
           <Icons name="arrow-top" className="w-6 h-6 text-white" />
         </button>
       </div>
