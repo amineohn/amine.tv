@@ -8,7 +8,7 @@ const Planning = () => {
         <div className="flex justify-center items-center">
           <div className={`flex items-center justify-center w-full text-white`}>
             <div className="flex justify-center items-center">
-              <div className="grid lg:grid-cols-5 xl:grid-cols-7 grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-5">
+              <div className="grid lg:grid-cols-5 xl:grid-cols-7 grid-cols-1 md:grid-cols-3 sm:grid-cols-2  gap-5">
                 <div className="space-y-2">
                   <div className="bg-neutral-800 w-[170px] h-14 px-4 py-4 rounded-xl">
                     <div className="flex justify-center items-center">
