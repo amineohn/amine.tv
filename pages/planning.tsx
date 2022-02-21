@@ -10,7 +10,7 @@ const Planning = () => {
             <div className="flex justify-center items-center">
               <div className="grid lg:grid-cols-5 xl:grid-cols-7 grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-5">
                 <div className="space-y-2">
-                  <div className="bg-neutral-800 w-[170px] h-10 px-2 py-2 rounded-xl">
+                  <div className="bg-neutral-800 w-[170px] h-14 px-4 py-4 rounded-xl">
                     <div className="flex justify-center items-center">
                       <span className="text-center font-medium">Lundi</span>
                     </div>
@@ -18,7 +18,7 @@ const Planning = () => {
                   <div className="bg-neutral-900 h-80 rounded-xl"></div>
                 </div>
                 <div className="space-y-2">
-                  <div className="bg-neutral-800 w-[170px] h-10 px-2 py-2 rounded-xl">
+                  <div className="bg-neutral-800 w-[170px] h-14 px-4 py-4 rounded-xl">
                     <div className="flex justify-center items-center">
                       <span className="text-center font-medium">Mardi</span>
                     </div>
@@ -26,7 +26,7 @@ const Planning = () => {
                   <div className="bg-neutral-900 h-80 rounded-xl"></div>
                 </div>
                 <div className="space-y-2">
-                  <div className="bg-neutral-800 w-[170px] h-10 px-2 py-2 rounded-xl">
+                  <div className="bg-neutral-800 w-[170px] h-14 px-4 py-4 rounded-xl">
                     <div className="flex justify-center items-center">
                       <span className="text-center font-medium">Mercredi</span>
                     </div>
@@ -34,7 +34,7 @@ const Planning = () => {
                   <div className="bg-neutral-900 h-80 rounded-xl"></div>
                 </div>
                 <div className="space-y-2">
-                  <div className="bg-neutral-800 w-[170px] h-10 px-2 py-2 rounded-xl">
+                  <div className="bg-neutral-800 w-[170px] h-14 px-4 py-4 rounded-xl">
                     <div className="flex justify-center items-center">
                       <span className="text-center font-medium">Jeudi</span>
                     </div>
@@ -42,7 +42,7 @@ const Planning = () => {
                   <div className="bg-neutral-900 h-80 rounded-xl"></div>
                 </div>
                 <div className="space-y-2">
-                  <div className="bg-neutral-800 w-[170px] h-10 px-2 py-2 rounded-xl">
+                  <div className="bg-neutral-800 w-[170px] h-14 px-4 py-4 rounded-xl">
                     <div className="flex justify-center items-center">
                       <span className="text-center font-medium">Vendredi</span>
                     </div>
@@ -50,7 +50,7 @@ const Planning = () => {
                   <div className="bg-neutral-900 h-80 rounded-xl"></div>
                 </div>
                 <div className="space-y-2">
-                  <div className="bg-neutral-800 w-[170px] h-10 px-2 py-2 rounded-xl">
+                  <div className="bg-neutral-800 w-[170px] h-14 px-4 py-4 rounded-xl">
                     <div className="flex justify-center items-center">
                       <span className="text-center font-medium">Samedi</span>
                     </div>
@@ -58,7 +58,7 @@ const Planning = () => {
                   <div className="bg-neutral-900 h-80 rounded-xl"></div>
                 </div>
                 <div className="space-y-2">
-                  <div className="bg-neutral-800 w-[170px] h-10 px-2 py-2 rounded-xl">
+                  <div className="bg-neutral-800 w-[170px] h-14 px-4 py-4 rounded-xl">
                     <div className="flex justify-center items-center">
                       <span className="text-center font-medium">Dimanche</span>
                     </div>
