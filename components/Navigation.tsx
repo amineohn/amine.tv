@@ -11,19 +11,27 @@ const Navigation = () => {
             onClick={() => router.push("/")}
             className="font-semibold text-lg lg:text-xl tracking-tight transition transform hover:translate-x-3 tracking-in-expand cursor-pointer"
           >
+            {router.pathname == "/" ? <span className="mr-1">•</span> : ""}
             Amine.tv
           </a>
           <div className="border-r h-8 w-0.5"></div>
+
           <a
             onClick={() => router.push("/games")}
-            className="font-semibold text-lg lg:text-xl tracking-tight transition transform hover:translate-x-3 cursor-pointer"
+            className={`font-semibold text-lg lg:text-xl tracking-tight transition transform hover:translate-x-3 cursor-pointer`}
           >
+            {router.pathname == "/games" ? <span className="mr-1">•</span> : ""}
             Jeux
           </a>
           <a
             onClick={() => router.push("/planning")}
             className="font-semibold text-lg lg:text-xl tracking-tight transition transform hover:translate-x-3 cursor-pointer"
           >
+            {router.pathname == "/planning" ? (
+              <span className="mr-1">•</span>
+            ) : (
+              ""
+            )}
             Planning
           </a>
         </div>
