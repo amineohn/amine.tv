@@ -1,6 +1,13 @@
 import { Transition } from "@headlessui/react";
 import { Alert } from "../interfaces";
-const Alert = ({ show, title, description, width, onClick }: Alert) => {
+const Alert = ({
+  show,
+  title,
+  description,
+  width,
+  onClick,
+  disableProgress,
+}: Alert) => {
   return (
     <Transition
       show={show}
@@ -11,7 +18,7 @@ const Alert = ({ show, title, description, width, onClick }: Alert) => {
       leave="transition ease-out duration-500 slide-out-top"
       leaveFrom="opacity-100"
       leaveTo="opacity-0 duration-500 slide-out-top"
-      className={`flex items-center justify-between w-full flex-wrap bg-gradient-to-tr from-[#6441a5] to-purple-500 p-6 rounded-xl shadow relative transition transform hover:scale-95`}
+      className={`flex items-center justify-between w-full flex-wrap bg-gradient-to-tr from-[#6441a5] to-purple-500 p-6 rounded-xl shadow transition-all ease-in-out relative hover:transition hover:transform hover:scale-95 slide-in-top`}
     >
       <div className="flex px-4 py-5">
         <div className="py-3">
@@ -40,14 +47,16 @@ const Alert = ({ show, title, description, width, onClick }: Alert) => {
           </div>
         </div>
       </div>
-      <div
-        className={`bg-purple-300/40 rounded-xl shadow relative z-50 w-full`}
-      >
+      {!disableProgress && (
         <div
-          className={`bg-purple-300/60 p-5 w-full h-full rounded-xl transition-all ease-in-out duration-300 z-50`}
-          style={{ width: `${width}%` }}
-        ></div>
-      </div>
+          className={`bg-purple-300/40 rounded-xl shadow relative z-50 w-full`}
+        >
+          <div
+            className={`bg-purple-300/60 p-5 w-full h-full rounded-xl transition-all ease-in-out duration-300 `}
+            style={{ width: `${width}%` }}
+          ></div>
+        </div>
+      )}
     </Transition>
   );
 };

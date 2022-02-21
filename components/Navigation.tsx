@@ -1,27 +1,36 @@
+import { useRouter } from "next/router";
 import Icons from "./Icons";
 
 const Navigation = () => {
+  const router = useRouter();
   return (
-    <nav className="container m-auto mt-5 px-0 md:px-2 lg:px-0">
-      <div className="flex items-center justify-between flex-wrap bg-gradient-to-tr from-[#6441a5] to-purple-500 p-6 rounded-xl shadow">
+    <nav className="container m-auto mt-5 py-2 md:px-2 sticky top-0 z-50 lg:px-0 px-4">
+      <div className="flex items-center justify-between flex-wrap bg-[#6441a5] p-6 rounded-xl shadow">
         <div className="flex items-center flex-shrink-0 text-white mr-6 space-x-5">
           <a
-            href="#"
-            className="font-semibold text-lg lg:text-xl tracking-tight transition transform hover:translate-x-3"
+            onClick={() => router.push("/")}
+            className="font-semibold text-lg lg:text-xl tracking-tight transition transform hover:translate-x-3 tracking-in-expand cursor-pointer"
           >
             Amine.tv
           </a>
+          <div className="border-r h-8 w-0.5"></div>
           <a
             href="#"
-            className="font-semibold text-lg lg:text-xl tracking-tight transition transform hover:translate-x-3"
+            className="font-semibold text-lg lg:text-xl tracking-tight transition transform hover:translate-x-3 cursor-pointer"
           >
             A propos
           </a>
           <a
             href="#"
-            className="font-semibold text-lg lg:text-xl tracking-tight transition transform hover:translate-x-3"
+            className="font-semibold text-lg lg:text-xl tracking-tight transition transform hover:translate-x-3 cursor-pointer"
           >
             Planning
+          </a>
+          <a
+            onClick={() => router.push("/games")}
+            className="font-semibold text-lg lg:text-xl tracking-tight transition transform hover:translate-x-3 cursor-pointer"
+          >
+            Jeux
           </a>
         </div>
         <div className="inline-flex space-x-2 md:mt-0 lg:mt-0 mt-4">
