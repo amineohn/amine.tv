@@ -175,7 +175,7 @@ const Home: NextPage = () => {
           leaveTo="opacity-0 duration-500 "
         >
           <TwitchEmbed
-            channel="tsuchiyakeiichi"
+            channel={configuration.twitch.twitchUser}
             id="twitch-embed"
             theme="dark"
             withChat={false}
@@ -383,9 +383,16 @@ const Home: NextPage = () => {
             show
               ? " transition-all ease-in-out duration-300"
               : " transition-all ease-in-out duration-300 "
-          } transition transform hover:-translate-y-3 hover:bg-white bg-[#6444a4] w-full h-[400px] rounded-xl hover:text-[#6444a4] text-white`}
+          } transition transform hover:-translate-y-3 cursor-pointer hover:bg-white bg-[#6444a4] w-full h-[400px] rounded-xl hover:text-[#6444a4] text-white`}
         >
-          <div className="flex justify-center items-center">
+          <div
+            className="flex justify-center items-center"
+            onClick={() =>
+              window.open(
+                `https://twitch.tv/${configuration.twitch.twitchUser}`
+              )
+            }
+          >
             <Icons name="twitchlogo" className="w-96 h-96" />
           </div>
         </FadeIn>
