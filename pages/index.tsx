@@ -16,7 +16,7 @@ const Home: NextPage = () => {
   const [show, setShow] = useState(true);
   const [message, setMessage] = useState(true);
   const [width, setWidth] = useState(0);
-  const [showOpenComment, setShowOpenComment] = useState(false);
+  const [messageError, setMessageError] = useState(false);
   const [username, setUsername] = useState("");
   const [comment, setComment] = useState("");
   const [error, setError] = useState("");
@@ -117,14 +117,17 @@ const Home: NextPage = () => {
     e.preventDefault();
     if (username === "" && comment === "") {
       setError("Les champs sont vides");
+      setMessageError(true);
       setSuccess(false);
       return;
     } else if (username === "") {
       setError("Le champ pseudo est vide");
+      setMessageError(true);
       setSuccess(false);
       return;
     } else if (comment === "") {
       setError("Le champ commentaire est vide");
+      setMessageError(true);
       setSuccess(false);
       return;
     }
@@ -134,6 +137,8 @@ const Home: NextPage = () => {
       createdAt: new Date(),
     });
     setError("");
+    setMessageError(false);
+
     setSuccess(true);
   };
   return (
@@ -213,18 +218,27 @@ const Home: NextPage = () => {
                 <form
                   onSubmit={handleSubmit}
                   method="POST"
-                  className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6"
+                  className="inline-block align-bottom bg-slate-900 rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6"
                 >
                   <div>
                     <div>
-                      {error && (
-                        <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
+                      <Transition
+                        show={messageError}
+                        enter="ease-out duration-300"
+                        enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                        enterTo="opacity-100 translate-y-0 sm:scale-100"
+                        leave="ease-in duration-200"
+                        leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+                        leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                      >
+                        <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-rose-100">
                           <XIcon
-                            className="h-6 w-6 text-red-600"
+                            className="h-6 w-6 text-rose-600"
                             aria-hidden="true"
                           />
                         </div>
-                      )}
+                      </Transition>
+
                       <div className="mt-3 text-center sm:mt-5">
                         <Transition
                           show={success}
@@ -235,24 +249,35 @@ const Home: NextPage = () => {
                           leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                           leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                         >
-                          <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
+                          <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-emerald-100">
                             <CheckIcon
-                              className="h-6 w-6 text-green-600"
+                              className="h-6 w-6 text-emerald-600"
                               aria-hidden="true"
                             />
                           </div>
                         </Transition>
-                        {error ? (
+                        <Transition
+                          show={messageError}
+                          enter="ease-out duration-300"
+                          enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                          enterTo="opacity-100 translate-y-0 sm:scale-100"
+                          leave="ease-in duration-200"
+                          leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+                          leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                        >
                           <Dialog.Title
                             as="h3"
-                            className="text-lg leading-6 font-medium text-rose-500"
+                            className="text-lg leading-6 font-medium text-rose-400"
                           >
                             {error}
                           </Dialog.Title>
+                        </Transition>
+                        {messageError ? (
+                          <></>
                         ) : (
                           <Dialog.Title
                             as="h3"
-                            className="text-lg leading-6 font-medium text-gray-900"
+                            className="text-lg leading-6 font-medium text-gray-50"
                           >
                             Ajouter un commentaire
                           </Dialog.Title>
@@ -262,7 +287,7 @@ const Home: NextPage = () => {
                             <div className="mt-1 rounded-md shadow-sm">
                               <label
                                 htmlFor="username"
-                                className="block text-sm text-left p-0.5 font-medium leading-5 text-gray-800"
+                                className="block text-sm text-left p-0.5 font-medium leading-5 text-gray-50"
                               >
                                 Pseudo
                               </label>
@@ -271,12 +296,13 @@ const Home: NextPage = () => {
                                 type="text"
                                 placeholder="Pseudo"
                                 value={username}
+                                autoComplete="off"
                                 onChange={(e) => setUsername(e.target.value)}
-                                className="form-input block placeholder-gray-800 font-medium transition duration-150 ease-in-out sm:text-sm sm:leading-5 px-2 py-2 rounded-lg bg-gray-50 border border-gray-300 focus:outline-none"
+                                className="form-input block placeholder-gray-50 font-medium transition duration-150 ease-in-out sm:text-sm sm:leading-5 px-2 py-2 rounded-lg bg-slate-800 border-2 border-slate-800 focus:outline-none text-gray-50"
                               />
                               <label
                                 htmlFor="comment"
-                                className="block text-sm text-left p-0.5 font-medium leading-5 text-gray-800"
+                                className="block text-sm text-left p-0.5 font-medium leading-5 text-gray-50"
                               >
                                 Commentaire
                               </label>
@@ -285,7 +311,7 @@ const Home: NextPage = () => {
                                 placeholder="Commentaire"
                                 value={comment}
                                 onChange={(e) => setComment(e.target.value)}
-                                className="form-input w-80 block placeholder-gray-800 font-medium transition duration-150 ease-in-out sm:text-sm sm:leading-5 px-2 py-2 rounded-lg bg-gray-50 border border-gray-300 focus:outline-none"
+                                className="form-input w-80 block placeholder-gray-50 font-medium transition duration-150 ease-in-out sm:text-sm sm:leading-5 px-2 py-2 rounded-lg bg-slate-800 border-2 border-slate-800 focus:outline-none text-gray-50"
                               />
                             </div>
                           </div>
@@ -295,12 +321,12 @@ const Home: NextPage = () => {
                     <div className="mt-5 sm:mt-6 flex justify-center items-center">
                       <button
                         type="submit"
-                        className="relative inline-flex items-center justify-start px-6 py-3 overflow-hidden font-medium transition-all bg-red-500 rounded-xl group"
+                        className="focus:outline-none relative inline-flex items-center justify-start px-6 py-3 overflow-hidden font-medium transition-all bg-[#6444a4]/90 rounded-xl group"
                       >
-                        <span className="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-red-700 rounded group-hover:-mr-4 group-hover:-mt-4">
-                          <span className="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white"></span>
+                        <span className="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-[#6444a4] rounded group-hover:-mr-4 group-hover:-mt-4">
+                          <span className="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-slate-900"></span>
                         </span>
-                        <span className="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full translate-y-full bg-red-600 rounded-2xl group-hover:mb-12 group-hover:translate-x-0"></span>
+                        <span className="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full translate-y-full bg-[#6444a4]/95 rounded-2xl group-hover:mb-12 group-hover:translate-x-0"></span>
                         <span className="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white">
                           Ajouter
                         </span>
