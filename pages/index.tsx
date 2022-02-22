@@ -46,7 +46,6 @@ const Home: NextPage = () => {
       setLoadTwitch(false);
     }
     setPlayer(data.data[0]);
-    console.log(player);
   };
   // get day and month and year by string
   const currentDate = () => {
