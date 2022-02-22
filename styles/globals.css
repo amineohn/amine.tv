@@ -33,7 +33,7 @@ a {
   @apply box-border;
 }
 ::-webkit-scrollbar {
-  @apply hidden;
+  @apply bg-slate-600/80 h-1 w-1 rounded-xl;
 }
 ::-webkit-scrollbar-button {
   @apply hidden;
@@ -45,7 +45,7 @@ a {
   @apply hidden;
 }
 ::-webkit-scrollbar-thumb {
-  @apply hidden;
+  @apply bg-[#6444a4] rounded-xl;
 }
 ::-webkit-scrollbar-corner {
   @apply hidden;

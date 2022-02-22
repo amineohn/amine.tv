@@ -37,9 +37,7 @@ const Alert = ({
         </div>
       </div>
       {!disableProgress && (
-        <div
-          className={`bg-purple-300/40 rounded-xl shadow relative z-50 w-full`}
-        >
+        <div className={`bg-purple-300/40 rounded-xl shadow relative w-full`}>
           <div
             className={`bg-purple-300/60 p-5 w-full h-full rounded-xl transition-all ease-in-out duration-300 `}
             style={{ width: `${width}%` }}

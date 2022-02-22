@@ -1,20 +1,31 @@
 import Navigation from "../components/Navigation";
 import type { NextPage } from "next";
-import React, { useState } from "react";
+import React, { Fragment, useRef, useState } from "react";
 import { useEffect } from "react";
 import Alert from "../components/Alert";
 import Icons from "../components/Icons";
 import { TwitchEmbed } from "react-twitch-embed";
-import { Transition } from "@headlessui/react";
+import { Dialog, Transition } from "@headlessui/react";
 import { configuration } from "../util/configuration";
 import { animateScroll as scroll } from "react-scroll";
+import { Firebase } from "../structures/firebase";
+import { Comments } from "../interfaces";
+import { CheckIcon, XIcon } from "@heroicons/react/solid";
 
 const Home: NextPage = () => {
   const [show, setShow] = useState(true);
   const [message, setMessage] = useState(true);
   const [width, setWidth] = useState(0);
-
+  const [showOpenComment, setShowOpenComment] = useState(false);
+  const [username, setUsername] = useState("");
+  const [comment, setComment] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
+  const [showComment, setShowComment] = useState([{}] as any);
   const [loadTwitch, setLoadTwitch] = useState(false);
+  const [open, setOpen] = useState(false);
+  const fire = new Firebase();
+
   useEffect(() => {
     if (width === 100) {
       setWidth(100);
@@ -91,7 +102,40 @@ const Home: NextPage = () => {
         break;
     }
   }, [width]);
-
+  useEffect(() => {
+    fire.collection("comments").onSnapshot((snapshot) => {
+      const comment = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        username: doc.data().username,
+        comment: doc.data().comment,
+        ...doc.data(),
+      }));
+      setShowComment(comment);
+    });
+  }, []);
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (username === "" && comment === "") {
+      setError("Les champs sont vides");
+      setSuccess(false);
+      return;
+    } else if (username === "") {
+      setError("Le champ pseudo est vide");
+      setSuccess(false);
+      return;
+    } else if (comment === "") {
+      setError("Le champ commentaire est vide");
+      setSuccess(false);
+      return;
+    }
+    fire.collection("comments").add({
+      username: username,
+      comment: comment,
+      createdAt: new Date(),
+    });
+    setError("");
+    setSuccess(true);
+  };
   return (
     <>
       <Navigation />
@@ -131,19 +175,189 @@ const Home: NextPage = () => {
             withChat={false}
           />
         </Transition>
+        <Transition.Root show={open} as={Fragment}>
+          <Dialog
+            as="div"
+            className="fixed z-10 inset-0 overflow-y-auto"
+            onClose={setOpen}
+          >
+            <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0"
+                enterTo="opacity-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100"
+                leaveTo="opacity-0"
+              >
+                <Dialog.Overlay className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+              </Transition.Child>
 
+              {/* This element is to trick the browser into centering the modal contents. */}
+              <span
+                className="hidden sm:inline-block sm:align-middle sm:h-screen"
+                aria-hidden="true"
+              >
+                &#8203;
+              </span>
+              <Transition.Child
+                as={Fragment}
+                enter="ease-out duration-300"
+                enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                enterTo="opacity-100 translate-y-0 sm:scale-100"
+                leave="ease-in duration-200"
+                leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+                leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+              >
+                <form
+                  onSubmit={handleSubmit}
+                  method="POST"
+                  className="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6"
+                >
+                  <div>
+                    <div>
+                      {error && (
+                        <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
+                          <XIcon
+                            className="h-6 w-6 text-red-600"
+                            aria-hidden="true"
+                          />
+                        </div>
+                      )}
+                      <div className="mt-3 text-center sm:mt-5">
+                        <Transition
+                          show={success}
+                          enter="ease-out duration-300"
+                          enterFrom="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                          enterTo="opacity-100 translate-y-0 sm:scale-100"
+                          leave="ease-in duration-200"
+                          leaveFrom="opacity-100 translate-y-0 sm:scale-100"
+                          leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                        >
+                          <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-green-100">
+                            <CheckIcon
+                              className="h-6 w-6 text-green-600"
+                              aria-hidden="true"
+                            />
+                          </div>
+                        </Transition>
+                        {error ? (
+                          <Dialog.Title
+                            as="h3"
+                            className="text-lg leading-6 font-medium text-rose-500"
+                          >
+                            {error}
+                          </Dialog.Title>
+                        ) : (
+                          <Dialog.Title
+                            as="h3"
+                            className="text-lg leading-6 font-medium text-gray-900"
+                          >
+                            Ajouter un commentaire
+                          </Dialog.Title>
+                        )}
+                        <div className="mt-2">
+                          <div className="mt-2 flex flex-col items-center justify-center">
+                            <div className="mt-1 rounded-md shadow-sm">
+                              <label
+                                htmlFor="username"
+                                className="block text-sm text-left p-0.5 font-medium leading-5 text-gray-800"
+                              >
+                                Pseudo
+                              </label>
+                              <input
+                                id="username"
+                                type="text"
+                                placeholder="Pseudo"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                                className="form-input block placeholder-gray-800 font-medium transition duration-150 ease-in-out sm:text-sm sm:leading-5 px-2 py-2 rounded-lg bg-gray-50 border border-gray-300 focus:outline-none"
+                              />
+                              <label
+                                htmlFor="comment"
+                                className="block text-sm text-left p-0.5 font-medium leading-5 text-gray-800"
+                              >
+                                Commentaire
+                              </label>
+                              <textarea
+                                id="comment"
+                                placeholder="Commentaire"
+                                value={comment}
+                                onChange={(e) => setComment(e.target.value)}
+                                className="form-input w-80 block placeholder-gray-800 font-medium transition duration-150 ease-in-out sm:text-sm sm:leading-5 px-2 py-2 rounded-lg bg-gray-50 border border-gray-300 focus:outline-none"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="mt-5 sm:mt-6 flex justify-center items-center">
+                      <button
+                        type="submit"
+                        className="relative inline-flex items-center justify-start px-6 py-3 overflow-hidden font-medium transition-all bg-red-500 rounded-xl group"
+                      >
+                        <span className="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-red-700 rounded group-hover:-mr-4 group-hover:-mt-4">
+                          <span className="absolute top-0 right-0 w-5 h-5 rotate-45 translate-x-1/2 -translate-y-1/2 bg-white"></span>
+                        </span>
+                        <span className="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full translate-y-full bg-red-600 rounded-2xl group-hover:mb-12 group-hover:translate-x-0"></span>
+                        <span className="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white">
+                          Ajouter
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </Transition.Child>
+            </div>
+          </Dialog>
+        </Transition.Root>
+        <div className="relative w-full flex gap-6 snap-x overflow-auto pt-18">
+          <div className="snap-center shrink-0">
+            <div className="shrink-0 w-4 sm:w-48"></div>
+          </div>
+          {showComment.map((item: Comments, index: string) => (
+            <div
+              key={index}
+              className="snap-center shrink-0 first:pl-8 last:pr-8 pb-4"
+            >
+              <div className="shrink-0 w-80 h-40 rounded-xl shadow-xl bg-gray-50">
+                <div className="px-2 py-2">
+                  <p className="text-gray-800 font-medium">{item.username}</p>
+                  <p className="text-gray-800">{item.comment}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+          <div className="snap-center shrink-0">
+            <div className="shrink-0 w-4 sm:w-48"></div>
+          </div>
+        </div>
+        <div className="flex justify-center items-center">
+          <a
+            className="relative inline-block text-lg group cursor-pointer"
+            onClick={() => (!open ? setOpen(true) : setOpen(false))}
+          >
+            <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-[#6444a4] rounded-lg group-hover:text-white">
+              <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
+              <span className="absolute left-0 w-64 h-64 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-[#6444a4] group-hover:-rotate-180 ease"></span>
+              <span className="relative">Ajouter un commentaire</span>
+            </span>
+            <span
+              className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-[#6444a4] rounded-lg group-hover:mb-0 group-hover:mr-0"
+              data-rounded="rounded-lg"
+            ></span>
+          </a>
+        </div>
         <div
           className={`${
             show
               ? " transition-all ease-in-out duration-300"
               : " transition-all ease-in-out duration-300 "
-          } bg-[#6444a4] w-full h-[400px] rounded-xl transition`}
+          } transition transform hover:-translate-y-3 hover:bg-white bg-[#6444a4] w-full h-[400px] rounded-xl hover:text-[#6444a4] text-white`}
         >
           <div className="flex justify-center items-center">
-            <Icons
-              name="twitchlogo"
-              className="w-96 h-96 text-white transition transform hover:-translate-y-3"
-            />
+            <Icons name="twitchlogo" className="w-96 h-96" />
           </div>
         </div>
       </div>
