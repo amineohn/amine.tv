@@ -126,6 +126,7 @@ const Home: NextPage = () => {
             channel="tsuchiyakeiichi"
             id="twitch-embed"
             theme="dark"
+            withChat={false}
           />
         </Transition>
 
