@@ -32,7 +32,7 @@ const Home: NextPage = () => {
   const currentDate = () => {
     return format(new Date(), "dd/MM/yyyy à HH:mm");
   };
-  console.log(currentDate());
+
   useEffect(() => {
     if (width === 100) {
       setWidth(100);
@@ -109,6 +109,7 @@ const Home: NextPage = () => {
         break;
     }
   }, [width]);
+  const array = Array(5).fill(0);
   useEffect(() => {
     fire
       .collection("comments")
@@ -157,6 +158,14 @@ const Home: NextPage = () => {
     setMessageError(false);
 
     setSuccess(true);
+  };
+
+  const checkData = (data: any) => {
+    if (data.length === 0) {
+      return false;
+    } else {
+      return true;
+    }
   };
   return (
     <>
@@ -383,39 +392,70 @@ const Home: NextPage = () => {
             <div className="snap-center shrink-0">
               <div className="shrink-0 w-4 sm:w-48"></div>
             </div>
-            {showComment.map((item: Comments, index: string) => (
-              <FadeIn
-                key={index}
-                className="snap-center shrink-0 first:pl-8 last:pr-8 pb-4"
-              >
-                <div className="shrink-0 w-80 h-40 rounded-xl shadow-xl bg-gray-50">
-                  <div className="flex justify-between px-5 py-4 flex-col">
-                    <div>
-                      <p
-                        className={`text-gray-800 font-medium text-lg ${
-                          item.comment?.length > 60 ? "truncate" : ""
-                        }`}
-                      >
-                        &laquo; {item.comment} &raquo;
-                      </p>
-                    </div>
-                    <div className="flex items-center gap-4">
-                      <div className="rounded-full w-12 h-12 bg-[#6444a4] overflow-hidden px-2.5 py-3">
-                        <Icons name="twitch" className="w-7 h-7 text-white" />
-                      </div>
-                      <div className="flex flex-col tracking-wider">
-                        <label className="text-gray-900 font-bold text-md">
-                          {item.username}
-                        </label>
-                        <label className="text-gray-800 font-normal text-sm">
-                          {item.createdAt}
-                        </label>
+            {showComment.length === 0 ? (
+              <>
+                {array.map((item, index) => (
+                  <FadeIn
+                    key={index}
+                    className="snap-center shrink-0 first:pl-8 last:pr-8 pb-4"
+                  >
+                    <div
+                      key={index}
+                      className="shrink-0 w-80 h-40 rounded-xl shadow-xl bg-gray-50"
+                    >
+                      <div className="flex justify-between px-5 py-16 flex-col">
+                        <div className="flex justify-center items-center">
+                          <div className="">
+                            <h1 className="text-center text-gray-800 text-lg font-medium">
+                              Aucun commentaire 😅
+                            </h1>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
+                  </FadeIn>
+                ))}
+              </>
+            ) : (
+              <>
+                {showComment.map((item: Comments, index: string) => (
+                  <FadeIn
+                    key={index}
+                    className="snap-center shrink-0 first:pl-8 last:pr-8 pb-4"
+                  >
+                    <div className="shrink-0 w-80 h-40 rounded-xl shadow-xl bg-gray-50">
+                      <div className="flex justify-between px-5 py-4 flex-col">
+                        <div>
+                          <p
+                            className={`text-gray-800 font-medium text-lg ${
+                              item.comment?.length > 60 ? "truncate" : ""
+                            }`}
+                          >
+                            &laquo; {item.comment} &raquo;
+                          </p>
+                        </div>
+                        <div className="flex items-center gap-4">
+                          <div className="rounded-full w-12 h-12 bg-[#6444a4] overflow-hidden px-2.5 py-3">
+                            <Icons
+                              name="twitch"
+                              className="w-7 h-7 text-white"
+                            />
+                          </div>
+                          <div className="flex flex-col tracking-wider">
+                            <label className="text-gray-900 font-bold text-md">
+                              {item.username}
+                            </label>
+                            <label className="text-gray-800 font-normal text-sm">
+                              {item.createdAt}
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </FadeIn>
+                ))}
+              </>
+            )}
             <div className="snap-center shrink-0">
               <div className="shrink-0 w-4 sm:w-48"></div>
             </div>
@@ -428,8 +468,8 @@ const Home: NextPage = () => {
           >
             <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-[#6444a4] rounded-lg group-hover:text-white">
               <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
-              <span className="absolute left-0 w-64 h-64 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-[#6444a4] group-hover:-rotate-180 ease"></span>
-              <span className="relative">Ajouter un commentaire</span>
+              <span className="absolute left-0 w-72 h-72 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-[#6444a4] group-hover:-rotate-180 ease"></span>
+              <span className="relative">👉 Ajouter un commentaire</span>
             </span>
             <span
               className="absolute bottom-0 right-0 w-full h-12 -mb-1 -mr-1 transition-all duration-200 ease-linear bg-[#6444a4] rounded-lg group-hover:mb-0 group-hover:mr-0"
