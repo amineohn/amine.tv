@@ -11,6 +11,7 @@ import { animateScroll as scroll } from "react-scroll";
 import { Firebase } from "../structures/firebase";
 import { Comments } from "../interfaces";
 import { CheckIcon, XIcon } from "@heroicons/react/solid";
+import FadeIn from "react-fade-in";
 
 const Home: NextPage = () => {
   const [show, setShow] = useState(true);
@@ -338,28 +339,30 @@ const Home: NextPage = () => {
             </div>
           </Dialog>
         </Transition.Root>
-        <div className="relative w-full flex gap-6 snap-x overflow-auto pt-18">
-          <div className="snap-center shrink-0">
-            <div className="shrink-0 w-4 sm:w-48"></div>
-          </div>
-          {showComment.map((item: Comments, index: string) => (
-            <div
-              key={index}
-              className="snap-center shrink-0 first:pl-8 last:pr-8 pb-4"
-            >
-              <div className="shrink-0 w-80 h-40 rounded-xl shadow-xl bg-gray-50">
-                <div className="px-2 py-2">
-                  <p className="text-gray-800 font-medium">{item.username}</p>
-                  <p className="text-gray-800">{item.comment}</p>
-                </div>
-              </div>
+        <FadeIn>
+          <div className="relative w-full flex gap-6 snap-x overflow-auto pt-18">
+            <div className="snap-center shrink-0">
+              <div className="shrink-0 w-4 sm:w-48"></div>
             </div>
-          ))}
-          <div className="snap-center shrink-0">
-            <div className="shrink-0 w-4 sm:w-48"></div>
+            {showComment.map((item: Comments, index: string) => (
+              <FadeIn
+                key={index}
+                className="snap-center shrink-0 first:pl-8 last:pr-8 pb-4"
+              >
+                <div className="shrink-0 w-80 h-40 rounded-xl shadow-xl bg-gray-50">
+                  <div className="px-2 py-2">
+                    <p className="text-gray-800 font-medium">{item.username}</p>
+                    <p className="text-gray-800">{item.comment}</p>
+                  </div>
+                </div>
+              </FadeIn>
+            ))}
+            <div className="snap-center shrink-0">
+              <div className="shrink-0 w-4 sm:w-48"></div>
+            </div>
           </div>
-        </div>
-        <div className="flex justify-center items-center">
+        </FadeIn>
+        <FadeIn className="flex justify-center items-center">
           <a
             className="relative inline-block text-lg group cursor-pointer"
             onClick={() => (!open ? setOpen(true) : setOpen(false))}
@@ -374,8 +377,8 @@ const Home: NextPage = () => {
               data-rounded="rounded-lg"
             ></span>
           </a>
-        </div>
-        <div
+        </FadeIn>
+        <FadeIn
           className={`${
             show
               ? " transition-all ease-in-out duration-300"
@@ -385,16 +388,16 @@ const Home: NextPage = () => {
           <div className="flex justify-center items-center">
             <Icons name="twitchlogo" className="w-96 h-96" />
           </div>
-        </div>
+        </FadeIn>
       </div>
-      <div className="fixed bottom-0 right-0 px-5 py-5">
+      <FadeIn className="fixed bottom-0 right-0 px-5 py-5">
         <button
           onClick={() => scroll.scrollToTop()}
           className="bg-[#6444a4] px-2 py-2 rounded-full transition transform hover:-translate-y-3 shadow-xl"
         >
           <Icons name="arrow-top" className="w-6 h-6 text-white" />
         </button>
-      </div>
+      </FadeIn>
     </>
   );
 };

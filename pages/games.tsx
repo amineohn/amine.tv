@@ -4,6 +4,7 @@ import { Games } from "../interfaces";
 import Navigation from "../components/Navigation";
 import Icons from "../components/Icons";
 import { animateScroll as scroll } from "react-scroll";
+import FadeIn from "react-fade-in";
 const MyGames = () => {
   const [data, setData] = useState([{}] as any);
   const api = async () => {
@@ -30,7 +31,7 @@ const MyGames = () => {
               <>
                 {data.map((item: Games) => (
                   <>
-                    <div className="space-y-4">
+                    <FadeIn className="space-y-4">
                       <div className="px-2 py-2 rounded-xl bg-white font-medium">
                         <p>{item.name}</p>
                       </div>
@@ -40,7 +41,7 @@ const MyGames = () => {
                           ?.replace("{width}", "250")
                           ?.replace("{height}", "300")}
                       />
-                    </div>
+                    </FadeIn>
                   </>
                 ))}
               </>
