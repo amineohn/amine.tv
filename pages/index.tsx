@@ -13,6 +13,7 @@ import { Comments, User } from "../interfaces";
 import { CheckIcon, XIcon } from "@heroicons/react/solid";
 import FadeIn from "react-fade-in";
 import { format, getDay } from "date-fns";
+import Loading from "../components/Loading";
 
 const Home: NextPage = () => {
   const [show, setShow] = useState(true);
@@ -25,7 +26,7 @@ const Home: NextPage = () => {
   const [success, setSuccess] = useState(false);
   const [showComment, setShowComment] = useState([{}] as any);
   const [loadTwitch, setLoadTwitch] = useState(false);
-  const [player, setPlayer] = useState([{}] as unknown as User);
+  const [player, setPlayer] = useState([{}] as any);
   const [open, setOpen] = useState(false);
   const fire = new Firebase();
   const checkLive = async () => {
@@ -63,66 +64,55 @@ const Home: NextPage = () => {
       case 0:
         setTimeout(() => {
           setWidth(10);
-          setLoadTwitch(false);
         }, 1000);
         break;
       case 10:
         setTimeout(() => {
           setWidth(20);
-          setLoadTwitch(false);
         }, 1000);
         break;
       case 20:
         setTimeout(() => {
           setWidth(30);
-          setLoadTwitch(false);
         }, 1000);
         break;
       case 30:
         setTimeout(() => {
           setWidth(40);
-          setLoadTwitch(false);
         }, 1000);
         break;
 
       case 40:
         setTimeout(() => {
           setWidth(50);
-          setLoadTwitch(false);
         }, 1000);
         break;
       case 50:
         setTimeout(() => {
           setWidth(60);
-          setLoadTwitch(false);
         }, 1000);
         break;
       case 60:
         setTimeout(() => {
           setWidth(70);
-          setLoadTwitch(false);
         }, 1000);
         break;
 
       case 70:
         setTimeout(() => {
           setWidth(80);
-          setLoadTwitch(false);
         }, 1000);
         break;
       case 80:
         setTimeout(() => {
           setWidth(90);
-          setLoadTwitch(false);
         }, 1000);
         break;
       case 90:
         setTimeout(() => {
           setWidth(100);
         }, 1000);
-        setTimeout(() => {
-          setLoadTwitch(true);
-        }, 1000);
+        setTimeout(() => {}, 1000);
         break;
       default:
         break;
@@ -180,13 +170,6 @@ const Home: NextPage = () => {
     setSuccess(true);
   };
 
-  const checkData = (data: any) => {
-    if (data.length === 0) {
-      return false;
-    } else {
-      return true;
-    }
-  };
   return (
     <>
       <Navigation />
@@ -210,22 +193,36 @@ const Home: NextPage = () => {
             window.open(`https://twitch.tv/${configuration.twitch.twitchUser}`)
           }
         />
-        <Transition
-          show={loadTwitch}
-          enter="transition ease-out duration-500"
-          enterFrom="opacity-0"
-          enterTo="opacity-100 ease-in duration-500"
-          leave="transition ease-out duration-500 "
-          leaveFrom="opacity-100"
-          leaveTo="opacity-0 duration-500 "
-        >
-          <TwitchEmbed
-            channel={configuration.twitch.twitchUser}
-            id="twitch-embed"
-            theme="dark"
-            withChat={false}
-          />
-        </Transition>
+        {player?.length >= 0 ? (
+          <div>
+            <div className="bg-[#6444a4] w-full h-[480px] !rounded-xl animate-pulse">
+              <div className="m-auto py-36">
+                <div className="flex justify-center items-center">
+                  <Loading />
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : (
+          <>
+            <Transition
+              show={loadTwitch}
+              enter="transition ease-out duration-500"
+              enterFrom="opacity-0"
+              enterTo="opacity-100 ease-in duration-500"
+              leave="transition ease-out duration-500 "
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0 duration-500 "
+            >
+              <TwitchEmbed
+                channel={configuration.twitch.twitchUser}
+                id="twitch-embed"
+                theme="dark"
+                withChat={false}
+              />
+            </Transition>
+          </>
+        )}
         <Transition.Root show={open} as={Fragment}>
           <Dialog
             as="div"

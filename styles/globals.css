@@ -7,7 +7,7 @@ a {
   @apply no-underline;
 }
 .loader {
-  @apply border-t-[#6444a4];
+  @apply border-t-neutral-900;
   -webkit-animation: spinner 1.5s linear infinite;
   animation: spinner 1.5s linear infinite;
 }
