@@ -22,5 +22,5 @@ export interface Games {
 export interface Comments {
   username: string;
   comment: string;
-  created_at: string;
+  createdAt: string;
 }

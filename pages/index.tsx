@@ -1,6 +1,6 @@
 import Navigation from "../components/Navigation";
 import type { NextPage } from "next";
-import React, { Fragment, useRef, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { useEffect } from "react";
 import Alert from "../components/Alert";
 import Icons from "../components/Icons";
@@ -12,6 +12,7 @@ import { Firebase } from "../structures/firebase";
 import { Comments } from "../interfaces";
 import { CheckIcon, XIcon } from "@heroicons/react/solid";
 import FadeIn from "react-fade-in";
+import { getDay } from "date-fns";
 
 const Home: NextPage = () => {
   const [show, setShow] = useState(true);
@@ -26,6 +27,16 @@ const Home: NextPage = () => {
   const [loadTwitch, setLoadTwitch] = useState(false);
   const [open, setOpen] = useState(false);
   const fire = new Firebase();
+
+  // get day and month and year by string
+  const currentDate = () => {
+    const date = new Date();
+    const day = getDay(date);
+    const month = date.getMonth() + 1;
+    const year = date.getFullYear();
+    const dates = `${day}/${month}/${year} à ${date.getHours()}:${date.getMinutes()}`;
+    return dates;
+  };
 
   useEffect(() => {
     if (width === 100) {
@@ -104,15 +115,19 @@ const Home: NextPage = () => {
     }
   }, [width]);
   useEffect(() => {
-    fire.collection("comments").onSnapshot((snapshot) => {
-      const comment = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        username: doc.data().username,
-        comment: doc.data().comment,
-        ...doc.data(),
-      }));
-      setShowComment(comment);
-    });
+    fire
+      .collection("comments")
+      .orderBy("createdAt")
+      .onSnapshot((snapshot) => {
+        const comment = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          username: doc.data().username,
+          comment: doc.data().comment,
+          createdAt: doc.data().createdAt,
+          ...doc.data(),
+        }));
+        setShowComment(comment);
+      });
   }, []);
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -132,10 +147,16 @@ const Home: NextPage = () => {
       setSuccess(false);
       return;
     }
+    if (comment.length > 75) {
+      setError("Le commentaire est trop long");
+      setMessageError(true);
+      setSuccess(false);
+      return;
+    }
     fire.collection("comments").add({
       username: username,
       comment: comment,
-      createdAt: new Date(),
+      createdAt: currentDate(),
     });
     setError("");
     setMessageError(false);
@@ -284,7 +305,7 @@ const Home: NextPage = () => {
                           </Dialog.Title>
                         )}
                         <div className="mt-2">
-                          <div className="mt-2 flex flex-col items-center justify-center">
+                          <div className="mt-2 flex flex-col items-center justify-center space-y-3">
                             <div className="mt-1 rounded-md shadow-sm">
                               <label
                                 htmlFor="username"
@@ -315,6 +336,25 @@ const Home: NextPage = () => {
                                 className="form-input w-80 block placeholder-gray-50 font-medium transition duration-150 ease-in-out sm:text-sm sm:leading-5 px-2 py-2 rounded-lg bg-slate-800 border-2 border-slate-800 focus:outline-none text-gray-50"
                               />
                             </div>
+                            <div className="w-80 h-1 bg-slate-700/60 rounded-xl">
+                              <div
+                                className="h-1 bg-[#6444a4] rounded-xl transition-all ease-in-out duration-200 max-w-[320px]"
+                                style={{ width: `${comment.length}%` }}
+                              />
+                            </div>
+                            <span
+                              className={`text-white px-5 py-2 rounded-xl transition-all ease-in-out duration-300 ${
+                                comment.length > 20
+                                  ? "bg-rose-500"
+                                  : "bg-[#6444a4]"
+                              }`}
+                            >
+                              Attention, il vous reste{" "}
+                              <span className="font-medium">
+                                {75 - comment.length}
+                              </span>{" "}
+                              caractères
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -350,9 +390,25 @@ const Home: NextPage = () => {
                 className="snap-center shrink-0 first:pl-8 last:pr-8 pb-4"
               >
                 <div className="shrink-0 w-80 h-40 rounded-xl shadow-xl bg-gray-50">
-                  <div className="px-2 py-2">
-                    <p className="text-gray-800 font-medium">{item.username}</p>
-                    <p className="text-gray-800">{item.comment}</p>
+                  <div className="flex justify-between px-5 py-4 flex-col">
+                    <div>
+                      <p className="text-gray-800 font-medium text-lg">
+                        &laquo; {item.comment} &raquo;
+                      </p>
+                    </div>
+                    <div className="flex items-center gap-4">
+                      <div className="rounded-full w-12 h-12 bg-black overflow-hidden">
+                        <img src="https://rairaksa.github.io/assets/img/rai.jpg" />
+                      </div>
+                      <div className="flex flex-col tracking-wider">
+                        <label className="text-gray-900 font-bold text-md">
+                          {item.username}
+                        </label>
+                        <label className="text-gray-800 font-normal text-sm">
+                          {item.createdAt}
+                        </label>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </FadeIn>
