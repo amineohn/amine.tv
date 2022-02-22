@@ -354,7 +354,7 @@ const Home: NextPage = () => {
                                 placeholder="Commentaire"
                                 value={comment}
                                 onChange={(e) => setComment(e.target.value)}
-                                className="form-input w-80 block placeholder-gray-50 font-medium transition duration-150 ease-in-out sm:text-sm sm:leading-5 px-2 py-2 rounded-lg bg-slate-800 border-2 border-slate-800 focus:outline-none text-gray-50"
+                                className="form-input w-60 lg:w-80 xl:w-80 block placeholder-gray-50 font-medium transition duration-150 ease-in-out sm:text-sm sm:leading-5 px-2 py-2 rounded-lg bg-slate-800 border-2 border-slate-800 focus:outline-none text-gray-50"
                               />
                             </div>
                             <div className="w-80 h-1 bg-slate-700/60 rounded-xl">

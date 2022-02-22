@@ -4,7 +4,7 @@ import Icons from "./Icons";
 const Navigation = () => {
   const router = useRouter();
   return (
-    <nav className="container m-auto mt-5 py-2 md:px-2 sticky top-0  lg:px-0 px-4">
+    <nav className="container m-auto mt-5 py-2 md:px-2 sticky top-0  lg:px-0 px-4 z-10">
       <div className="flex items-center justify-between flex-wrap bg-[#6441a5] p-6 rounded-xl shadow">
         <div className="flex items-center flex-shrink-0 text-white mr-6 space-x-5">
           <a
