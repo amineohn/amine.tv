@@ -398,7 +398,7 @@ const Home: NextPage = () => {
                     <div>
                       <p
                         className={`text-gray-800 font-medium text-lg ${
-                          item.comment.length > 60 ? "truncate" : ""
+                          item.comment?.length > 60 ? "truncate" : ""
                         }`}
                       >
                         &laquo; {item.comment} &raquo;
