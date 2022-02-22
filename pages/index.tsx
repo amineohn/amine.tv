@@ -9,7 +9,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { configuration } from "../util/configuration";
 import { animateScroll as scroll } from "react-scroll";
 import { Firebase } from "../structures/firebase";
-import { Comments } from "../interfaces";
+import { Comments, User } from "../interfaces";
 import { CheckIcon, XIcon } from "@heroicons/react/solid";
 import FadeIn from "react-fade-in";
 import { format, getDay } from "date-fns";
@@ -25,9 +25,28 @@ const Home: NextPage = () => {
   const [success, setSuccess] = useState(false);
   const [showComment, setShowComment] = useState([{}] as any);
   const [loadTwitch, setLoadTwitch] = useState(false);
+  const [player, setPlayer] = useState([{}] as unknown as User);
   const [open, setOpen] = useState(false);
   const fire = new Firebase();
-
+  const checkLive = async () => {
+    const response = await fetch(
+      `https://api.twitch.tv/helix/users?login=tsuchiyakeiichi`,
+      {
+        headers: {
+          "Client-ID": `${configuration.twitch.clientId}`,
+          Authorization: `Bearer ${configuration.twitch.clientSecret}`,
+        },
+      }
+    );
+    const data = await response.json();
+    if (data.data?.length > 0) {
+      setLoadTwitch(true);
+    } else {
+      setLoadTwitch(false);
+    }
+    setPlayer(data.data[0]);
+    console.log(player);
+  };
   // get day and month and year by string
   const currentDate = () => {
     return format(new Date(), "dd/MM/yyyy à HH:mm");
@@ -108,6 +127,7 @@ const Home: NextPage = () => {
       default:
         break;
     }
+    checkLive();
   }, [width]);
   const array = Array(5).fill(0);
   useEffect(() => {
@@ -173,8 +193,8 @@ const Home: NextPage = () => {
       <div className="mt-2 w-full container m-auto space-y-6 py-4 lg:px-0 px-4">
         <Alert
           show={message}
-          title="Bienvenue sur mon site ! "
-          description="Je suis un jeune streameur passionné par l'informatique et le gaming."
+          title="Bienvenue sur mon site 👀"
+          description={player.description}
           disableProgress={true}
           backgroundColor="bg-gradient-to-bl from-fuchsia-600 to-pink-600"
           onClick={() => null}
