@@ -12,7 +12,7 @@ import { Firebase } from "../structures/firebase";
 import { Comments } from "../interfaces";
 import { CheckIcon, XIcon } from "@heroicons/react/solid";
 import FadeIn from "react-fade-in";
-import { getDay } from "date-fns";
+import { format, getDay } from "date-fns";
 
 const Home: NextPage = () => {
   const [show, setShow] = useState(true);
@@ -30,14 +30,9 @@ const Home: NextPage = () => {
 
   // get day and month and year by string
   const currentDate = () => {
-    const date = new Date();
-    const day = getDay(date);
-    const month = date.getMonth() + 1;
-    const year = date.getFullYear();
-    const dates = `${day}/${month}/${year} à ${date.getHours()}:${date.getMinutes()}`;
-    return dates;
+    return format(new Date(), "dd/MM/yyyy à HH:mm");
   };
-
+  console.log(currentDate());
   useEffect(() => {
     if (width === 100) {
       setWidth(100);
@@ -405,8 +400,8 @@ const Home: NextPage = () => {
                       </p>
                     </div>
                     <div className="flex items-center gap-4">
-                      <div className="rounded-full w-12 h-12 bg-black overflow-hidden">
-                        <img src="https://rairaksa.github.io/assets/img/rai.jpg" />
+                      <div className="rounded-full w-12 h-12 bg-[#6444a4] overflow-hidden px-2.5 py-3">
+                        <Icons name="twitch" className="w-7 h-7 text-white" />
                       </div>
                       <div className="flex flex-col tracking-wider">
                         <label className="text-gray-900 font-bold text-md">
