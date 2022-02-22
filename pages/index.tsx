@@ -327,7 +327,7 @@ const Home: NextPage = () => {
                         )}
                         <div className="mt-2">
                           <div className="mt-2 flex flex-col items-center justify-center space-y-3">
-                            <div className="mt-1 rounded-md shadow-sm">
+                            <div className="mt-1 rounded-md shadow-sm px-10">
                               <label
                                 htmlFor="username"
                                 className="block text-sm text-left p-0.5 font-medium leading-5 text-gray-50"
