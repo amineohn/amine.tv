@@ -9,10 +9,10 @@ import { Dialog, Transition } from "@headlessui/react";
 import { configuration } from "../util/configuration";
 import { animateScroll as scroll } from "react-scroll";
 import { Firebase } from "../structures/firebase";
-import { Comments, User } from "../interfaces";
+import { Comments } from "../interfaces";
 import { CheckIcon, XIcon } from "@heroicons/react/solid";
 import FadeIn from "react-fade-in";
-import { format, getDay } from "date-fns";
+import { format } from "date-fns";
 import Loading from "../components/Loading";
 
 const Home: NextPage = () => {
