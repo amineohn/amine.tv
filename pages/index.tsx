@@ -338,7 +338,11 @@ const Home: NextPage = () => {
                             </div>
                             <div className="w-80 h-1 bg-slate-700/60 rounded-xl">
                               <div
-                                className="h-1 bg-[#6444a4] rounded-xl transition-all ease-in-out duration-200 max-w-[320px]"
+                                className={`h-1 ${
+                                  comment.length > 20
+                                    ? "bg-rose-500"
+                                    : "bg-[#6444a4]"
+                                } rounded-xl transition-all ease-in-out duration-200 max-w-[320px]`}
                                 style={{ width: `${comment.length}%` }}
                               />
                             </div>
@@ -392,7 +396,11 @@ const Home: NextPage = () => {
                 <div className="shrink-0 w-80 h-40 rounded-xl shadow-xl bg-gray-50">
                   <div className="flex justify-between px-5 py-4 flex-col">
                     <div>
-                      <p className="text-gray-800 font-medium text-lg">
+                      <p
+                        className={`text-gray-800 font-medium text-lg ${
+                          item.comment.length > 60 ? "truncate" : ""
+                        }`}
+                      >
                         &laquo; {item.comment} &raquo;
                       </p>
                     </div>
