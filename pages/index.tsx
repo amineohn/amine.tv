@@ -101,6 +101,7 @@ const Home: NextPage = () => {
           title="Bienvenue sur mon site ! "
           description="Je suis un jeune streameur passionné par l'informatique et le gaming."
           disableProgress={true}
+          backgroundColor="bg-gradient-to-bl from-fuchsia-600 to-pink-600"
           onClick={() => null}
         />
         <Alert
@@ -109,6 +110,7 @@ const Home: NextPage = () => {
           description="Amine vient de lancer un live sur Twitch"
           width={`${width}`}
           disableProgress={false}
+          backgroundColor="bg-gradient-to-tr from-[#6441a5] to-purple-500"
           onClick={() =>
             window.open(`https://twitch.tv/${configuration.twitch.twitchUser}`)
           }

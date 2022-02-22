@@ -1,5 +1,6 @@
 import { Transition } from "@headlessui/react";
 import { Alert } from "../interfaces";
+import Icons from "./Icons";
 const Alert = ({
   show,
   title,
@@ -7,6 +8,7 @@ const Alert = ({
   width,
   onClick,
   disableProgress,
+  backgroundColor,
 }: Alert) => {
   return (
     <Transition
@@ -18,27 +20,14 @@ const Alert = ({
       leave="transition ease-out duration-500 slide-out-top"
       leaveFrom="opacity-100"
       leaveTo="opacity-0 duration-500 slide-out-top"
-      className={`flex items-center justify-between w-full flex-wrap bg-gradient-to-tr from-[#6441a5] to-purple-500 p-6 rounded-xl shadow transition-all ease-in-out relative hover:transition hover:transform hover:scale-95 slide-in-top`}
+      className={`flex items-center justify-between w-full flex-wrap ${backgroundColor} p-6 rounded-xl shadow transition-all ease-in-out relative hover:transition hover:transform hover:scale-95 slide-in-top`}
     >
       <div className="flex px-4 py-5">
         <div className="py-3">
-          <svg
-            fill="currentColor"
-            version="1.1"
-            id="lni_lni-twitch"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlnsXlink="http://www.w3.org/1999/xlink"
-            x="0px"
-            y="0px"
-            viewBox="0 0 64 64"
-            className="fill-current h-8 w-8 text-white mr-4"
-            xmlSpace="preserve"
-          >
-            <path
-              d="M6.5,1L2.4,11.7v43.5h14.8V63h8.3l7.9-7.9h12l16.2-16.2V1H6.5z M56,36.1l-9.3,9.3H32l-7.9,7.9v-7.9H11.6V6.5H56V36.1
-	L56,36.1z M46.8,17.2v16.2h-5.5V17.2H46.8z M32,17.2v16.2h-5.5V17.2H32z"
-            />
-          </svg>
+          <Icons
+            name="twitch"
+            className="fill-current h-8 w-8 text-black mr-4"
+          />
         </div>
         <div className="flex relative flex-col flex-between">
           <div>

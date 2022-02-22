@@ -2,6 +2,7 @@ export interface Alert {
   show: boolean;
   title: string;
   description: string;
+  backgroundColor: string;
   width?: string;
   onClick?: () => void;
   disableProgress: boolean;
