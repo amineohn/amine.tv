@@ -6,7 +6,7 @@ import Alert from "../components/Alert";
 import Icons from "../components/Icons";
 import { TwitchEmbed } from "react-twitch-embed";
 import { Dialog, Transition } from "@headlessui/react";
-import { configuration } from "../util/configuration";
+import { configuration } from "../utils/configuration";
 import { animateScroll as scroll } from "react-scroll";
 import { Firebase } from "../structures/firebase";
 import { Comments, User } from "../interfaces";

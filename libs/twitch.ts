@@ -1,5 +1,5 @@
 import axios from "axios";
-import { configuration } from "../util/configuration";
+import { configuration } from "../utils/configuration";
 const endpoint = `https://api.twitch.tv/helix/users?login=${configuration.twitch.twitchChannel}`;
 const topGames = `https://api.twitch.tv/helix/games/top`;
 export const getUser = async () => {

@@ -2,7 +2,7 @@ import "../styles/globals.css";
 import React from "react";
 import { NextPage } from "next";
 import { NextSeo } from "next-seo";
-import { configuration } from "../util/configuration";
+import { configuration } from "../utils/configuration";
 export default function MyApp({
   Component,
   pageProps,

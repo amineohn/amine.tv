@@ -8,7 +8,7 @@ import "firebase/compat/analytics";
 import "firebase/compat/performance";
 import "firebase/messaging";
 
-import { configuration } from "../util/configuration";
+import { configuration } from "../utils/configuration";
 
 export class Firebase {
   settings() {
