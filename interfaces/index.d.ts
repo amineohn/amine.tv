@@ -25,6 +25,7 @@ export interface Comments {
   createdAt: string;
 }
 export interface User {
+
   broadcaster_type: string;
   created_at: string;
   description: string;
@@ -35,4 +36,5 @@ export interface User {
   profile_image_url: string;
   type: string;
   view_count: number;
+
 }

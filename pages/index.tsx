@@ -9,11 +9,13 @@ import { Dialog, Transition } from "@headlessui/react";
 import { configuration } from "../util/configuration";
 import { animateScroll as scroll } from "react-scroll";
 import { Firebase } from "../structures/firebase";
-import { Comments } from "../interfaces";
+import { Comments, User } from "../interfaces";
 import { CheckIcon, XIcon } from "@heroicons/react/solid";
 import FadeIn from "react-fade-in";
 import { format } from "date-fns";
 import Loading from "../components/Loading";
+import useSWR from "swr";
+import fetcher from "../libs/fetcher";
 
 const Home: NextPage = () => {
   const [show, setShow] = useState(true);
@@ -26,27 +28,9 @@ const Home: NextPage = () => {
   const [success, setSuccess] = useState(false);
   const [showComment, setShowComment] = useState([{}] as any);
   const [loadTwitch, setLoadTwitch] = useState(false);
-  const [player, setPlayer] = useState([{}] as any);
   const [open, setOpen] = useState(false);
   const fire = new Firebase();
-  const checkLive = async () => {
-    const response = await fetch(
-      `https://api.twitch.tv/helix/users?login=${configuration.twitch.twitchChannel}`,
-      {
-        headers: {
-          "Client-ID": `${configuration.twitch.clientId}`,
-          Authorization: `Bearer ${configuration.twitch.clientSecret}`,
-        },
-      }
-    );
-    const data = await response.json();
-    if (data.data?.length > 0) {
-      setLoadTwitch(true);
-    } else {
-      setLoadTwitch(false);
-    }
-    setPlayer(data.data[0]);
-  };
+  const {data} = useSWR<User>('/api/twitch', fetcher);
   // get day and month and year by string
   const currentDate = () => {
     return format(new Date(), "dd/MM/yyyy à HH:mm");
@@ -59,6 +43,7 @@ const Home: NextPage = () => {
         setShow(false);
       }, 700);
     }
+    
     switch (width) {
       case 0:
         setTimeout(() => {
@@ -111,12 +96,16 @@ const Home: NextPage = () => {
         setTimeout(() => {
           setWidth(100);
         }, 1000);
-        setTimeout(() => {}, 1000);
+        setTimeout(() => {
+
+          if(data) {
+            setLoadTwitch(true);
+          }
+        }, 1000);
         break;
       default:
         break;
     }
-    checkLive();
   }, [width]);
   const array = Array(5).fill(0);
   useEffect(() => {
@@ -134,7 +123,8 @@ const Home: NextPage = () => {
         setShowComment(comment);
       });
   }, []);
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (username === "" && comment === "") {
       setError("Les champs sont vides");
@@ -168,7 +158,7 @@ const Home: NextPage = () => {
 
     setSuccess(true);
   };
-
+  console.log(data)
   return (
     <>
       <Navigation />
@@ -176,7 +166,7 @@ const Home: NextPage = () => {
         <Alert
           show={message}
           title="Bienvenue sur mon site 👀"
-          description={player.description}
+          description={data ? data.description : "data.description"}
           disableProgress={true}
           backgroundColor="bg-gradient-to-bl from-fuchsia-600 to-pink-600"
           onClick={() => null}
@@ -192,7 +182,7 @@ const Home: NextPage = () => {
             window.open(`https://twitch.tv/${configuration.twitch.twitchUser}`)
           }
         />
-        {player?.length >= 0 ? (
+        {data ? (
           <div>
             <div className="bg-[#6444a4] w-full h-[480px] !rounded-xl animate-pulse">
               <div className="py-36 m-auto">
