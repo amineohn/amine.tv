@@ -10,6 +10,7 @@ const Alert = ({
   onClick,
   disableProgress,
   backgroundColor,
+  hover,
 }: Alert) => {
   return (
     <>
@@ -23,7 +24,7 @@ const Alert = ({
           leave="transition ease-out duration-500"
           leaveFrom="opacity-100"
           leaveTo="opacity-0 duration-500"
-          className={`flex relative flex-wrap justify-between items-center p-6 w-full rounded-xl shadow transition-all ease-in-out ${backgroundColor} hover:transition hover:transform hover:scale-95`}
+          className={`flex relative flex-wrap justify-between items-center p-6 w-full rounded-xl shadow transition-all ease-in-out ${backgroundColor} ${hover}`}
         >
           <div className="flex px-4 py-5">
             <div className="py-3">

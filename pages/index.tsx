@@ -168,6 +168,7 @@ const Home: NextPage = () => {
           disableProgress={true}
           backgroundColor="bg-gradient-to-bl from-fuchsia-600 to-pink-600"
           onClick={() => null}
+          hover=""
         />
         <Alert
           show={show}
@@ -176,6 +177,7 @@ const Home: NextPage = () => {
           width={`${width}`}
           disableProgress={false}
           backgroundColor="bg-gradient-to-tr from-[#6441a5] to-purple-500"
+          hover="hover:transition hover:transform hover:scale-95"
           onClick={() =>
             window.open(`https://twitch.tv/${configuration.twitch.twitchUser}`)
           }

@@ -6,6 +6,7 @@ export interface Alert {
   width?: string;
   onClick?: () => void;
   disableProgress: boolean;
+  hover: string;
 }
 
 export interface Icon {
