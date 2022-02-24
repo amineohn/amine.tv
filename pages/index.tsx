@@ -31,7 +31,6 @@ const Home: NextPage = () => {
   const [open, setOpen] = useState(false);
   const fire = new Firebase();
   const {data} = useSWR<User>('/api/twitch/user', fetcher);
-  // get day and month and year by string
   const currentDate = () => {
     return format(new Date(), "dd/MM/yyyy à HH:mm");
   };
