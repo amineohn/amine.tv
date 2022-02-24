@@ -36,9 +36,13 @@ const MyGames = () => {
               <>
                 {array.map((item: number) => (
                   <>
+                    <FadeIn className="space-y-4">
+                      <div className="px-2 py-5 font-medium bg-[#6444a4] rounded-xl text-white animate-pulse">
+                      </div>
                     <div key={item} className="space-y-4">
                       <div className="w-[250px] h-[300px] bg-[#6444a4] rounded-lg animate-pulse"></div>
                     </div>
+                    </FadeIn>
                   </>
                 ))}
               </>
