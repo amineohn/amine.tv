@@ -31,7 +31,7 @@ const Home: NextPage = () => {
   const fire = new Firebase();
   const checkLive = async () => {
     const response = await fetch(
-      `https://api.twitch.tv/helix/users?login=tsuchiyakeiichi`,
+      `https://api.twitch.tv/helix/users?login=${configuration.twitch.twitchChannel}`,
       {
         headers: {
           "Client-ID": `${configuration.twitch.clientId}`,
