@@ -23,28 +23,28 @@ const Alert = ({
           leave="transition ease-out duration-500"
           leaveFrom="opacity-100"
           leaveTo="opacity-0 duration-500"
-          className={`flex items-center justify-between w-full flex-wrap ${backgroundColor} p-6 rounded-xl shadow transition-all ease-in-out relative hover:transition hover:transform hover:scale-95`}
+          className={`flex relative flex-wrap justify-between items-center p-6 w-full rounded-xl shadow transition-all ease-in-out ${backgroundColor} hover:transition hover:transform hover:scale-95`}
         >
           <div className="flex px-4 py-5">
             <div className="py-3">
               <Icons
                 name="twitch"
-                className="fill-current h-8 w-8 text-black mr-4"
+                className="mr-4 w-8 h-8 text-black fill-current"
               />
             </div>
             <div className="flex relative flex-col flex-between">
               <div>
-                <p className="font-bold text-xl text-white">{title}</p>
-                <p className="text-md text-white">{description}</p>
+                <p className="text-xl font-bold text-white">{title}</p>
+                <p className="text-white text-md">{description}</p>
               </div>
             </div>
           </div>
           {!disableProgress && (
             <div
-              className={`bg-purple-300/40 rounded-xl shadow relative w-full`}
+              className={`relative w-full rounded-xl shadow bg-purple-300/40`}
             >
               <div
-                className={`bg-purple-300/60 p-5 w-full h-full rounded-xl transition-all ease-in-out duration-300 `}
+                className={`p-5 w-full h-full rounded-xl transition-all duration-300 ease-in-out bg-purple-300/60`}
                 style={{ width: `${width}%` }}
               ></div>
             </div>

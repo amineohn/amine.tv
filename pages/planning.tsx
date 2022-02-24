@@ -6,16 +6,16 @@ const Planning = () => {
   return (
     <>
       <Navigation />
-      <div className="mt-2 w-full container m-auto space-y-6 py-4 lg:px-0 px-4">
+      <div className="container px-4 py-4 m-auto mt-2 space-y-6 w-full lg:px-0">
         <div className="flex justify-center items-center">
-          <div className={`flex items-center justify-center w-full text-white`}>
+          <div className={`flex justify-center items-center w-full text-white`}>
             <div className="flex justify-center items-center">
-              <div className="grid lg:grid-cols-5 xl:grid-cols-7 grid-cols-1 md:grid-cols-3 sm:grid-cols-2  gap-5"></div>
+              <div className="grid grid-cols-1 gap-5 lg:grid-cols-5 xl:grid-cols-7 md:grid-cols-3 sm:grid-cols-2"></div>
             </div>
           </div>
         </div>
       </div>
-      <div className="fixed bottom-0 right-0 px-5 py-5">
+      <div className="fixed right-0 bottom-0 px-5 py-5">
         <button
           onClick={() => scroll.scrollToTop()}
           className="bg-[#6444a4] px-2 py-2 rounded-full transition transform hover:-translate-y-3 shadow-xl"

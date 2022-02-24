@@ -172,7 +172,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Navigation />
-      <div className="mt-2 w-full container m-auto space-y-6 py-4 lg:px-0 px-4">
+      <div className="container px-4 py-4 m-auto mt-2 space-y-6 w-full lg:px-0">
         <Alert
           show={message}
           title="Bienvenue sur mon site 👀"
@@ -195,7 +195,7 @@ const Home: NextPage = () => {
         {player?.length >= 0 ? (
           <div>
             <div className="bg-[#6444a4] w-full h-[480px] !rounded-xl animate-pulse">
-              <div className="m-auto py-36">
+              <div className="py-36 m-auto">
                 <div className="flex justify-center items-center">
                   <Loading />
                 </div>
@@ -225,10 +225,10 @@ const Home: NextPage = () => {
         <Transition.Root show={open} as={Fragment}>
           <Dialog
             as="div"
-            className="fixed z-10 inset-0 overflow-y-auto"
+            className="overflow-y-auto fixed inset-0 z-10"
             onClose={setOpen}
           >
-            <div className="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+            <div className="flex justify-center items-end px-4 pt-4 pb-20 min-h-screen text-center sm:block sm:p-0">
               <Transition.Child
                 as={Fragment}
                 enter="ease-out duration-300"
@@ -260,7 +260,7 @@ const Home: NextPage = () => {
                 <form
                   onSubmit={handleSubmit}
                   method="POST"
-                  className="inline-block align-bottom bg-slate-900 rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6"
+                  className="inline-block overflow-hidden px-4 pt-5 pb-4 text-left align-bottom rounded-lg shadow-xl transition-all transform bg-slate-900 sm:my-8 sm:align-middle sm:max-w-lg sm:w-full sm:p-6"
                 >
                   <div>
                     <div>
@@ -273,9 +273,9 @@ const Home: NextPage = () => {
                         leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                         leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                       >
-                        <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-rose-100">
+                        <div className="flex justify-center items-center mx-auto w-12 h-12 bg-rose-100 rounded-full">
                           <XIcon
-                            className="h-6 w-6 text-rose-600"
+                            className="w-6 h-6 text-rose-600"
                             aria-hidden="true"
                           />
                         </div>
@@ -291,9 +291,9 @@ const Home: NextPage = () => {
                           leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                           leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
                         >
-                          <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-emerald-100">
+                          <div className="flex justify-center items-center mx-auto w-12 h-12 bg-emerald-100 rounded-full">
                             <CheckIcon
-                              className="h-6 w-6 text-emerald-600"
+                              className="w-6 h-6 text-emerald-600"
                               aria-hidden="true"
                             />
                           </div>
@@ -309,7 +309,7 @@ const Home: NextPage = () => {
                         >
                           <Dialog.Title
                             as="h3"
-                            className="text-lg leading-6 font-medium text-rose-400"
+                            className="text-lg font-medium leading-6 text-rose-400"
                           >
                             {error}
                           </Dialog.Title>
@@ -319,14 +319,14 @@ const Home: NextPage = () => {
                         ) : (
                           <Dialog.Title
                             as="h3"
-                            className="text-lg leading-6 font-medium text-gray-50"
+                            className="text-lg font-medium leading-6 text-gray-50"
                           >
                             Ajouter un commentaire
                           </Dialog.Title>
                         )}
                         <div className="mt-2">
-                          <div className="mt-2 flex flex-col items-center justify-center space-y-3">
-                            <div className="mt-1 rounded-md shadow-sm px-10">
+                          <div className="flex flex-col justify-center items-center mt-2 space-y-3">
+                            <div className="px-10 mt-1 rounded-md shadow-sm">
                               <label
                                 htmlFor="username"
                                 className="block text-sm text-left p-0.5 font-medium leading-5 text-gray-50"
@@ -340,7 +340,7 @@ const Home: NextPage = () => {
                                 value={username}
                                 autoComplete="off"
                                 onChange={(e) => setUsername(e.target.value)}
-                                className="form-input block placeholder-gray-50 font-medium transition duration-150 ease-in-out sm:text-sm sm:leading-5 px-2 py-2 rounded-lg bg-slate-800 border-2 border-slate-800 focus:outline-none text-gray-50"
+                                className="block px-2 py-2 font-medium placeholder-gray-50 text-gray-50 rounded-lg border-2 transition duration-150 ease-in-out form-input sm:text-sm sm:leading-5 bg-slate-800 border-slate-800 focus:outline-none"
                               />
                               <label
                                 htmlFor="comment"
@@ -353,10 +353,10 @@ const Home: NextPage = () => {
                                 placeholder="Commentaire"
                                 value={comment}
                                 onChange={(e) => setComment(e.target.value)}
-                                className="form-input w-60 lg:w-80 xl:w-80 block placeholder-gray-50 font-medium transition duration-150 ease-in-out sm:text-sm sm:leading-5 px-2 py-2 rounded-lg bg-slate-800 border-2 border-slate-800 focus:outline-none text-gray-50"
+                                className="block px-2 py-2 w-60 font-medium placeholder-gray-50 text-gray-50 rounded-lg border-2 transition duration-150 ease-in-out form-input lg:w-80 xl:w-80 sm:text-sm sm:leading-5 bg-slate-800 border-slate-800 focus:outline-none"
                               />
                             </div>
-                            <div className="w-80 h-1 bg-slate-700/60 rounded-xl">
+                            <div className="w-80 h-1 rounded-xl bg-slate-700/60">
                               <div
                                 className={`h-1 ${
                                   comment.length > 20
@@ -383,7 +383,7 @@ const Home: NextPage = () => {
                         </div>
                       </div>
                     </div>
-                    <div className="mt-5 sm:mt-6 flex justify-center items-center">
+                    <div className="flex justify-center items-center mt-5 sm:mt-6">
                       <button
                         type="submit"
                         className="focus:outline-none relative inline-flex items-center justify-start px-6 py-3 overflow-hidden font-medium transition-all bg-[#6444a4]/90 rounded-xl group"
@@ -404,25 +404,25 @@ const Home: NextPage = () => {
           </Dialog>
         </Transition.Root>
         <FadeIn>
-          <div className="relative w-full flex gap-6 snap-x overflow-auto pt-18">
+          <div className="flex overflow-auto relative gap-6 w-full snap-x pt-18">
             <div className="snap-center shrink-0">
-              <div className="shrink-0 w-4 sm:w-48"></div>
+              <div className="w-4 shrink-0 sm:w-48"></div>
             </div>
             {showComment.length === 0 ? (
               <>
                 {array.map((item, index) => (
                   <FadeIn
                     key={index}
-                    className="snap-center shrink-0 first:pl-8 last:pr-8 pb-4"
+                    className="pb-4 snap-center shrink-0 first:pl-8 last:pr-8"
                   >
                     <div
                       key={index}
-                      className="shrink-0 w-80 h-40 rounded-xl shadow-xl bg-gray-50"
+                      className="w-80 h-40 bg-gray-50 rounded-xl shadow-xl shrink-0"
                     >
-                      <div className="flex justify-between px-5 py-16 flex-col">
+                      <div className="flex flex-col justify-between px-5 py-16">
                         <div className="flex justify-center items-center">
                           <div className="">
-                            <h1 className="text-center text-gray-800 text-lg font-medium">
+                            <h1 className="text-lg font-medium text-center text-gray-800">
                               Aucun commentaire 😅
                             </h1>
                           </div>
@@ -437,10 +437,10 @@ const Home: NextPage = () => {
                 {showComment.map((item: Comments, index: string) => (
                   <FadeIn
                     key={index}
-                    className="snap-center shrink-0 first:pl-8 last:pr-8 pb-4"
+                    className="pb-4 snap-center shrink-0 first:pl-8 last:pr-8"
                   >
-                    <div className="shrink-0 w-80 h-40 rounded-xl shadow-xl bg-gray-50">
-                      <div className="flex justify-between px-5 py-4 flex-col">
+                    <div className="w-80 h-40 bg-gray-50 rounded-xl shadow-xl shrink-0">
+                      <div className="flex flex-col justify-between px-5 py-4">
                         <div>
                           <p
                             className={`text-gray-800 font-medium text-lg ${
@@ -450,7 +450,7 @@ const Home: NextPage = () => {
                             &laquo; {item.comment} &raquo;
                           </p>
                         </div>
-                        <div className="flex items-center gap-4">
+                        <div className="flex gap-4 items-center">
                           <div className="rounded-full w-12 h-12 bg-[#6444a4] overflow-hidden px-2.5 py-3">
                             <Icons
                               name="twitch"
@@ -458,10 +458,10 @@ const Home: NextPage = () => {
                             />
                           </div>
                           <div className="flex flex-col tracking-wider">
-                            <label className="text-gray-900 font-bold text-md">
+                            <label className="font-bold text-gray-900 text-md">
                               {item.username}
                             </label>
-                            <label className="text-gray-800 font-normal text-sm">
+                            <label className="text-sm font-normal text-gray-800">
                               {item.createdAt}
                             </label>
                           </div>
@@ -473,17 +473,17 @@ const Home: NextPage = () => {
               </>
             )}
             <div className="snap-center shrink-0">
-              <div className="shrink-0 w-4 sm:w-48"></div>
+              <div className="w-4 shrink-0 sm:w-48"></div>
             </div>
           </div>
         </FadeIn>
         <FadeIn className="flex justify-center items-center">
           <a
-            className="relative inline-block text-lg group cursor-pointer"
+            className="inline-block relative text-lg cursor-pointer group"
             onClick={() => (!open ? setOpen(true) : setOpen(false))}
           >
             <span className="relative z-10 block px-5 py-3 overflow-hidden font-medium leading-tight text-gray-800 transition-colors duration-300 ease-out border-2 border-[#6444a4] rounded-lg group-hover:text-white">
-              <span className="absolute inset-0 w-full h-full px-5 py-3 rounded-lg bg-gray-50"></span>
+              <span className="absolute inset-0 px-5 py-3 w-full h-full bg-gray-50 rounded-lg"></span>
               <span className="absolute left-0 w-72 h-72 -ml-2 transition-all duration-300 origin-top-right -rotate-90 -translate-x-full translate-y-12 bg-[#6444a4] group-hover:-rotate-180 ease"></span>
               <span className="relative">👉 Ajouter un commentaire</span>
             </span>
@@ -496,8 +496,8 @@ const Home: NextPage = () => {
         <FadeIn
           className={`${
             show
-              ? " transition-all ease-in-out duration-300"
-              : " transition-all ease-in-out duration-300 "
+              ? "transition-all duration-300 ease-in-out"
+              : "transition-all duration-300 ease-in-out"
           } transition transform hover:-translate-y-3 cursor-pointer hover:bg-white bg-[#6444a4] w-full h-[400px] rounded-xl hover:text-[#6444a4] text-white`}
         >
           <div
@@ -512,7 +512,7 @@ const Home: NextPage = () => {
           </div>
         </FadeIn>
       </div>
-      <FadeIn className="fixed bottom-0 right-0 px-5 py-5">
+      <FadeIn className="fixed right-0 bottom-0 px-5 py-5">
         <button
           onClick={() => scroll.scrollToTop()}
           className="bg-[#6444a4] px-2 py-2 rounded-full transition transform hover:-translate-y-3 shadow-xl"
