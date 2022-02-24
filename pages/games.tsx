@@ -1,25 +1,12 @@
-import { useEffect, useState } from "react";
-import { configuration } from "../util/configuration";
 import { Games } from "../interfaces";
 import Navigation from "../components/Navigation";
 import Icons from "../components/Icons";
 import { animateScroll as scroll } from "react-scroll";
 import FadeIn from "react-fade-in";
+import useSWR from "swr";
+import fetcher from "../libs/fetcher";
 const MyGames = () => {
-  const [data, setData] = useState([{}] as any);
-  const api = async () => {
-    const response = await fetch(`https://api.twitch.tv/helix/games/top`, {
-      headers: {
-        "Client-ID": `${configuration.twitch.clientId}`,
-        Authorization: `Bearer ${configuration.twitch.clientSecret}`,
-      },
-    });
-    const data = await response.json();
-    setData(data.data);
-  };
-  useEffect(() => {
-    api();
-  }, []);
+  const {data}: any = useSWR<Games>("/api/twitch/games", fetcher);
   const array = Array(10).fill(0);
   return (
     <>

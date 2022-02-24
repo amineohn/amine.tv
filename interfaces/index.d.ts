@@ -18,6 +18,9 @@ export interface Games {
   name: string;
   box_art_url: string;
 }
+export interface ListGames{
+  games: Games[];
+}
 
 export interface Comments {
   username: string;

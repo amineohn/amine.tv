@@ -1,9 +1,9 @@
 import { NextApiResponse } from "next";
-import { getUser } from "../../libs/twitch";
+import { getGames } from "../../../libs/twitch";
 
 export default async (_, res: NextApiResponse) => {
-  const response = await getUser();
+  const response = await getGames();
 
-  const user = response.data.data[0];
+  const user = response.data.data;
   return res.status(200).json(user);
 };
