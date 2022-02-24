@@ -30,7 +30,7 @@ const Home: NextPage = () => {
   const [loadTwitch, setLoadTwitch] = useState(false);
   const [open, setOpen] = useState(false);
   const fire = new Firebase();
-  const {data} = useSWR<User>('/api/twitch/user', fetcher);
+  const {data} = useSWR<User>('/api/user', fetcher);
   const currentDate = () => {
     return format(new Date(), "dd/MM/yyyy à HH:mm");
   };

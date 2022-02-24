@@ -6,7 +6,7 @@ import FadeIn from "react-fade-in";
 import useSWR from "swr";
 import fetcher from "../libs/fetcher";
 const MyGames = () => {
-  const {data}: any = useSWR<Games>("/api/twitch/games", fetcher);
+  const {data}: any = useSWR<Games>("/api/games", fetcher);
   const array = Array(10).fill(0);
   return (
     <>

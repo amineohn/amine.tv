@@ -1,5 +1,5 @@
 import { NextApiResponse } from "next";
-import { getGames } from "../../../libs/twitch";
+import { getGames } from "../../libs/twitch";
 
 export default async (_, res: NextApiResponse) => {
   const response = await getGames();
